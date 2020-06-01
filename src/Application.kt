@@ -17,6 +17,7 @@ import io.ktor.client.engine.apache.*
 import io.ktor.client.features.logging.*
 import io.ktor.freemarker.FreeMarker
 import io.ktor.freemarker.FreeMarkerContent
+import io.ktor.request.receiveParameters
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -33,7 +34,7 @@ fun Application.module(testing: Boolean = false) {
 
     install(Webjars) {
         path = "/webjars" //defaults to /webjars
-        zone = ZoneId.systemDefault() //defaults to ZoneId.systemDefault()
+        this.zone = ZoneId.systemDefault() //defaults to ZoneId.systemDefault()
     }
 
     val client = HttpClient(Apache) {
@@ -43,6 +44,19 @@ fun Application.module(testing: Boolean = false) {
     }
 
     routing {
+        route("/login") {
+            get {
+                call.respond(FreeMarkerContent("login.ftl", null))
+            }
+            post {
+                val post = call.receiveParameters()
+                if (post["username"] != null && post["username"] == post["password"]) {
+                    call.respondText("OK")
+                } else {
+                    call.respond(FreeMarkerContent("login.ftl", mapOf("error" to "Invalid login")))
+                }
+            }
+        }
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
         }
