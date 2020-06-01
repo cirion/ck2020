@@ -51,7 +51,7 @@ fun Application.module(testing: Boolean = false) {
             post {
                 val post = call.receiveParameters()
                 if (post["username"] != null && post["username"] == post["password"]) {
-                    call.respondText("OK")
+                    call.respondRedirect("/", permanent = false)
                 } else {
                     call.respond(FreeMarkerContent("login.ftl", mapOf("error" to "Invalid login")))
                 }
