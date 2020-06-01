@@ -1,14 +1,13 @@
 package com.seberin.bday
 
+import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.*
 import io.ktor.response.*
-import io.ktor.request.*
 import io.ktor.routing.*
 import io.ktor.http.*
 import io.ktor.html.*
 import kotlinx.html.*
 import kotlinx.css.*
-import io.ktor.content.*
 import io.ktor.http.content.*
 import io.ktor.locations.*
 import io.ktor.webjars.*
@@ -16,12 +15,19 @@ import java.time.*
 import io.ktor.client.*
 import io.ktor.client.engine.apache.*
 import io.ktor.client.features.logging.*
+import io.ktor.freemarker.FreeMarker
+import io.ktor.freemarker.FreeMarkerContent
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
+
+data class IndexData(val items: List<Int>)
 
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
+    install(FreeMarker) {
+        templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
+    }
     install(Locations) {
     }
 
@@ -39,6 +45,10 @@ fun Application.module(testing: Boolean = false) {
     routing {
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
+        }
+
+        get("/html-freemarker") {
+            call.respond(FreeMarkerContent("index.ftl", mapOf("data" to IndexData(listOf(1, 42, 420))), ""))
         }
 
         get("/html-dsl") {
