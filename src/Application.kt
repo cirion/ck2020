@@ -95,6 +95,7 @@ fun Application.module(testing: Boolean = false) {
         // Static feature. Try to access `/static/ktor_logo.svg`
         static("/static") {
             resources("static")
+            resource("favicon.ico")
         }
 
         get<MyLocation> {
