@@ -1,5 +1,7 @@
 package com.seberin.bday
 
+// Welcome to Jank City, please enjoy your stay!
+
 import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.*
 import io.ktor.response.*
@@ -55,13 +57,23 @@ fun Application.module(testing: Boolean = false) {
             }
             post {
                 val post = call.receiveParameters()
-                if (post["username"] != null && post["username"] == post["password"]) {
-                    call.respondRedirect("/", permanent = false)
+                if (post["answer"]?.toLowerCase() == "minneapolis") {
+                    call.respondRedirect("/mellon", permanent = false)
                 } else {
                     call.respond(FreeMarkerContent("login.ftl", mapOf("error" to "I knew you were a robot from the past! That is, unless...")))
                 }
             }
         }
+
+        route("/mellon") {
+            get {
+                call.respond(FreeMarkerContent("2_got_minneapolis.ftl", null))
+            }
+            post {
+                call.respondRedirect("/", permanent = false)
+            }
+        }
+
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
         }
