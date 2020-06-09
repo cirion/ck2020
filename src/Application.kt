@@ -26,6 +26,34 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 data class IndexData(val items: List<Int>)
 
+data class Hasbro(
+    val index: Int,
+    val p1: String,
+    val p2: String? = null,
+    val p3: String? = null,
+    val label: String? = null
+)
+
+private val Hasbro1 = Hasbro(
+    index = 1,
+    p1 = "ATTENTION",
+    p2 = "Our automated intellectual property AI scanner has determined that this site contains NUMEROUS VIOLATIONS of our INTELLECTUAL PROPERTY and TRADEMARKS. Specifically, it contains FLAGRANT UNAPPROVED USAGE of DONATELLO who is a REGISTERED TRADEMARK of HASBRO throughout the ENTIRE UNIVERSE.\n",
+    label = "Oh, no!"
+)
+
+private val Hasbro2 = Hasbro(
+    index = 2,
+    p1 = "Yes.",
+    label = "What should I do?"
+)
+
+private val Hasbro3 = Hasbro(
+    index = 3,
+    p1 = "Please remove all unapproved usages of our INTELLECTUAL PROPERTY from your memory. You may access these mental images once again after legally purchasing one of our many fine products featuring the visage of DONATELLO.",
+    p2 = "Furthermore, we urge you to not visit a suspicious <a href='https://discord.gg/PY4NC7e'>Discord server</a>. Our automated intellectual property AI scanner has determined that it contains further VIOLATIONS of our INTELLECTUAL PROPERTY and TRADEMARKS.",
+    p3 = "END COMMUNICATION"
+)
+
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
@@ -70,7 +98,21 @@ fun Application.module(testing: Boolean = false) {
                 call.respond(FreeMarkerContent("2_got_minneapolis.ftl", null))
             }
             post {
-                call.respondRedirect("/", permanent = false)
+                call.respondRedirect("/knockknock", permanent = false)
+            }
+        }
+
+        route("/knockknock") {
+            get {
+                call.respond(FreeMarkerContent("3_hasbro.ftl", Hasbro1))
+            }
+            post {
+                val post = call.receiveParameters()
+                val model = when (post["index"]) {
+                    "1" -> Hasbro2
+                    else -> Hasbro3
+                }
+                call.respond(FreeMarkerContent("3_hasbro.ftl", model))
             }
         }
 
