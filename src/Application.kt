@@ -15,6 +15,7 @@ import java.time.*
 import io.ktor.client.*
 import io.ktor.client.engine.apache.*
 import io.ktor.client.features.logging.*
+import io.ktor.features.DefaultHeaders
 import io.ktor.freemarker.FreeMarker
 import io.ktor.freemarker.FreeMarkerContent
 import io.ktor.request.receiveParameters
@@ -30,6 +31,10 @@ fun Application.module(testing: Boolean = false) {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
     }
     install(Locations) {
+    }
+
+    install(DefaultHeaders) {
+        header("X-Robots-Tag", "noindex, nofollow, noarchive, nosnippet, noimageindex")
     }
 
     install(Webjars) {
@@ -53,7 +58,7 @@ fun Application.module(testing: Boolean = false) {
                 if (post["username"] != null && post["username"] == post["password"]) {
                     call.respondRedirect("/", permanent = false)
                 } else {
-                    call.respond(FreeMarkerContent("login.ftl", mapOf("error" to "Invalid login")))
+                    call.respond(FreeMarkerContent("login.ftl", mapOf("error" to "I knew you were a robot from the past! That is, unless...")))
                 }
             }
         }
@@ -93,9 +98,15 @@ fun Application.module(testing: Boolean = false) {
         }
 
         // Static feature. Try to access `/static/ktor_logo.svg`
-        static("/static") {
-            resources("static")
+        static {
+            staticBasePackage = "/static"
+
             resource("favicon.ico")
+            resource("robots.txt")
+
+            route("static") {
+                files("resources/static")
+            }
         }
 
         get<MyLocation> {
