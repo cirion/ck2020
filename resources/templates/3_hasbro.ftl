@@ -4,6 +4,7 @@
     <title>👊</title>
 </head>
 <body>
+<div class="content">
 <img src="/static/images/hasbro.png" />
 <p>${p1}</p>
 
@@ -22,4 +23,5 @@
 </form>
 
 </#if>
+</div>
 </body>

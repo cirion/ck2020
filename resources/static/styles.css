@@ -1,3 +1,22 @@
 body {
     background: #B9D8FF;
 }
+img {
+  max-width: 100%;
+  display: block;
+}
+
+article {
+  width: 940px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.content {
+  margin: auto;
+  width: 700px;
+  color: #ccc;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 4px;
+  padding: 10px;
+}

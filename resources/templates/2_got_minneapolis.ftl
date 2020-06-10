@@ -4,6 +4,7 @@
     <title>🎉</title>
 </head>
 <body>
+<div class="content">
 <p>
 That’s right! It’s been a little surprising to see my hometown city in the news recently. In fact, I…
 </p>
@@ -13,4 +14,5 @@ Hang on, someone’s at the door. I’ll just be a moment.
 <form action="/mellon" method="post" enctype="application/x-www-form-urlencoded">
     <div><input type="submit" value="Continue" /></div>
 </form>
+</div>
 </body>
