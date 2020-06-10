@@ -50,3 +50,9 @@ input[type=submit] {
   border-radius: 4px;
   padding: 10px;
 }
+
+@media (min-width: 360px) {
+  body {
+    font-size: 1.5em;
+  }
+}
