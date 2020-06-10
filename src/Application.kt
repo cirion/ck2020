@@ -116,6 +116,20 @@ fun Application.module(testing: Boolean = false) {
             }
         }
 
+        route("/carmensandiego") {
+            get {
+                call.respond(FreeMarkerContent("4_hiking.ftl", Hasbro1))
+            }
+            post {
+                val post = call.receiveParameters()
+                if (post["answer"]?.toLowerCase() == "new zealand") {
+                    call.respondRedirect("/", permanent = false)
+                } else {
+                    call.respond(FreeMarkerContent("4_hiking.ftl", mapOf("error" to "Hang on, let me check!<br /><br />Nope, he isn't there.")))
+                }
+            }
+        }
+
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
         }
