@@ -1,3 +1,4 @@
+<!-- Graphic design is my passion. -->
 <html>
 <head>
     <#include "/common/head.ftl">
