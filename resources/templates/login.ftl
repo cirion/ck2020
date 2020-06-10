@@ -40,8 +40,8 @@
             <p style="color:red;">${error}</p>
         </#if>
         <form action="/login" method="post" enctype="application/x-www-form-urlencoded">
-            <div><input type="text" name="answer" /></div>
-            <div><input type="submit" value="Submit" /></div>
+            <div class="col"><input type="text" name="answer" /></div>
+            <div class="col"><input type="submit" value="Submit" /></div>
         </form>
     </div>
 </body>
