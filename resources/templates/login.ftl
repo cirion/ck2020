@@ -43,6 +43,7 @@
             <div class="col"><input type="text" name="answer" /></div>
             <div class="col"><input type="submit" value="Submit" /></div>
         </form>
+        <iframe class="game" src="https://ckforty.web.app/" />
     </div>
 </body>
 </html>

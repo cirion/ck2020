@@ -27,31 +27,49 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 data class IndexData(val items: List<Int>)
 
 data class Hasbro(
-    val index: Int,
-    val p1: String,
-    val p2: String? = null,
-    val p3: String? = null,
-    val label: String? = null
+        val index: Int,
+        val p1: String,
+        val p2: String? = null,
+        val p3: String? = null,
+        val label: String? = null
 )
 
 private val Hasbro1 = Hasbro(
-    index = 1,
-    p1 = "ATTENTION",
-    p2 = "Our automated intellectual property AI scanner has determined that this site contains NUMEROUS VIOLATIONS of our INTELLECTUAL PROPERTY and TRADEMARKS. Specifically, it contains FLAGRANT UNAPPROVED USAGE of DONATELLO who is a REGISTERED TRADEMARK of HASBRO throughout the ENTIRE UNIVERSE.\n",
-    label = "Oh, no!"
+        index = 1,
+        p1 = "ATTENTION",
+        p2 = "Our automated intellectual property AI scanner has determined that this site contains NUMEROUS VIOLATIONS of our INTELLECTUAL PROPERTY and TRADEMARKS. Specifically, it contains FLAGRANT UNAPPROVED USAGE of DONATELLO who is a REGISTERED TRADEMARK of HASBRO throughout the ENTIRE UNIVERSE.\n",
+        label = "Oh, no!"
 )
 
 private val Hasbro2 = Hasbro(
-    index = 2,
-    p1 = "Yes.",
-    label = "What should I do?"
+        index = 2,
+        p1 = "Yes.",
+        label = "What should I do?"
 )
 
 private val Hasbro3 = Hasbro(
-    index = 3,
-    p1 = "Please remove all unapproved usages of our INTELLECTUAL PROPERTY from your memory. You may access these mental images once again after legally purchasing one of our many fine products featuring the visage of DONATELLO.",
-    p2 = "Furthermore, we urge you to not visit a suspicious <a href='https://discord.gg/PY4NC7e'>Discord server</a>. Our automated intellectual property AI scanner has determined that it contains further VIOLATIONS of our INTELLECTUAL PROPERTY and TRADEMARKS.",
-    p3 = "END COMMUNICATION"
+        index = 3,
+        p1 = "Please remove all unapproved usages of our INTELLECTUAL PROPERTY from your memory. You may access these mental images once again after legally purchasing one of our many fine products featuring the visage of DONATELLO.",
+        p2 = "Furthermore, we urge you to not visit a suspicious <a href='https://discord.gg/PY4NC7e'>Discord server</a>. Our automated intellectual property AI scanner has determined that it contains further VIOLATIONS of our INTELLECTUAL PROPERTY and TRADEMARKS.",
+        p3 = "END COMMUNICATION"
+)
+
+data class Zune(
+        val index: Int,
+        val p1: String,
+        val label: String
+)
+
+private val Zune1 = Zune(
+        index = 1,
+        p1 = "Bingo! We’ve got him now. Hang on…",
+        label = "All right."
+)
+
+private val Zune2 = Zune(
+        index = 2,
+        p1 = "Drat! We just missed him. He did leave something behind, though: A Zune player!",
+        label = "Seriously?"
 )
 
 @Suppress("unused") // Referenced in application.conf
@@ -123,9 +141,60 @@ fun Application.module(testing: Boolean = false) {
             post {
                 val post = call.receiveParameters()
                 if (post["answer"]?.toLowerCase() == "new zealand") {
-                    call.respondRedirect("/", permanent = false)
+                    call.respondRedirect("/tramp", permanent = false)
                 } else {
                     call.respond(FreeMarkerContent("4_hiking.ftl", mapOf("error" to "Hang on, let me check!<br /><br />Nope, he isn't there.")))
+                }
+            }
+        }
+
+        route("/tramp") {
+            get {
+                call.respond(FreeMarkerContent("5_city.ftl", Hasbro1))
+            }
+            post {
+                val post = call.receiveParameters()
+                if (post["answer"]?.toLowerCase() == "glenorchy"
+                        || post["answer"]?.toLowerCase() == "kinloch") {
+                    call.respondRedirect("/", permanent = false)
+                } else if (post["answer"]?.toLowerCase() == "queenstown") {
+                    call.respond(FreeMarkerContent("5_city.ftl", mapOf("error" to "That city is too large. Well, by New Zealand standards, at least. Interpol would have no trouble finding him there. We need to find some place smaller and closer to the trailhead.")))
+                } else if (post["answer"]?.toLowerCase() == "te anau") {
+                    call.respond(FreeMarkerContent("5_city.ftl", mapOf("error" to "It's a pretty town, but too far away. Maybe he's someplace further northeast?")))
+                } else {
+                    call.respond(FreeMarkerContent("5_city.ftl", mapOf("error" to "I'm afraid that isn't it. If only we had a map!")))
+                }
+            }
+        }
+
+        route("/brown") {
+            get {
+                call.respond(FreeMarkerContent("6_zune.ftl", Zune1))
+            }
+            post {
+                val post = call.receiveParameters()
+                val index = post["index"]
+                if (index == "1") {
+                    call.respond(FreeMarkerContent("6_zune.ftl", Zune2))
+                } else {
+                    call.respondRedirect("/roadtrip", permanent = false)
+                }
+            }
+        }
+
+
+        route("/roadtrip") {
+            get {
+                val tracks = listOf("I Remember California", "California Love", "California Gurls", "Still In Hollywood")
+                call.respond(FreeMarkerContent("7_playlist.ftl", mapOf("tracks" to tracks)))
+            }
+            post {
+                val post = call.receiveParameters()
+                val guess = post["tracks"]
+                if (guess == "California Love") {
+                    call.respondRedirect("/", permanent = false)
+                } else {
+                    call.respondRedirect("/login", permanent = false)
                 }
             }
         }
@@ -197,7 +266,8 @@ fun Application.module(testing: Boolean = false) {
 @Location("/location/{name}")
 class MyLocation(val name: String, val arg1: Int = 42, val arg2: String = "default")
 
-@Location("/type/{name}") data class Type(val name: String) {
+@Location("/type/{name}")
+data class Type(val name: String) {
     @Location("/edit")
     data class Edit(val type: Type)
 
