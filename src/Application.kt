@@ -24,6 +24,8 @@ import io.ktor.request.receiveParameters
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
+// Hopefully this goes without saying, but... don't ever do this in a real app. Any of this.
+
 data class IndexData(val items: List<Int>)
 
 data class Hasbro(
@@ -182,7 +184,6 @@ fun Application.module(testing: Boolean = false) {
             }
         }
 
-
         route("/roadtrip") {
             get {
                 val tracks = listOf("I Remember California", "California Love", "California Gurls", "Still In Hollywood")
@@ -192,10 +193,37 @@ fun Application.module(testing: Boolean = false) {
                 val post = call.receiveParameters()
                 val guess = post["tracks"]
                 if (guess == "California Love") {
-                    call.respondRedirect("/", permanent = false)
+                    call.respondRedirect("/hacktheplanet", permanent = false)
                 } else {
-                    call.respondRedirect("/login", permanent = false)
+                    call.respondRedirect("/uhoh", permanent = false)
                 }
+            }
+        }
+
+        route("/uhoh") {
+            get {
+                call.respond(FreeMarkerContent("7a_doj.ftl", null))
+            }
+        }
+
+        route("/hacktheplanet") {
+            get {
+                call.respond(FreeMarkerContent("8_convicted.ftl", null))
+            }
+            post {
+                call.respondRedirect("/swordfish", permanent = false)
+            }
+        }
+
+        route("/swordfish") {
+            get {
+                call.respond(FreeMarkerContent("9_hacking_cta.ftl", null))
+            }
+        }
+
+        route("/lexencrypt") {
+            get {
+                call.respond(FreeMarkerContent("10_lexencrypt.ftl", null))
             }
         }
 
