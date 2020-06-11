@@ -85,6 +85,7 @@ fun Application.module(testing: Boolean = false) {
 
     install(DefaultHeaders) {
         header("X-Robots-Tag", "noindex, nofollow, noarchive, nosnippet, noimageindex")
+        header("X-Engine", "Ktor") // will send this header with each response
     }
 
     install(Webjars) {
