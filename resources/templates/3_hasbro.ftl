@@ -5,7 +5,7 @@
 </head>
 <body>
 <div class="content">
-<img src="/static/images/hasbro.png" />
+<img src="/static/images/hasbro_200.png" />
 <p>${p1}</p>
 
 <#if p2??>

@@ -7,6 +7,9 @@
 <body>
     <div class="content">
         <p>
+        <img src="/static/images/king_brown_eyes.png" />
+        </p>
+        <p>
         You made it!
         </p>
         <p>
@@ -28,14 +31,6 @@
         <img src="/static/images/spoon_cherry2.jpg" />
         </p>
         This statue was erected in a Midwestern city in the same year I moved there. What is TODAY’S headline in this city’s newspaper?
-        <p>
-        <iframe src="https://open.spotify.com/embed/playlist/5TvayRvZ8QjQAaLJ7CSo93" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        </p>
-        <p>3</p>
-        <p>
-        <img src="/static/images/donatello_standing.webp" />
-        </p>
-        <p>4</p>
         <#if error??>
             <p style="color:red;">${error}</p>
         </#if>

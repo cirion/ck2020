@@ -52,7 +52,7 @@ private val Hasbro2 = Hasbro(
 private val Hasbro3 = Hasbro(
         index = 3,
         p1 = "Please remove all unapproved usages of our INTELLECTUAL PROPERTY from your memory. You may access these mental images once again after legally purchasing one of our many fine products featuring the visage of DONATELLO.",
-        p2 = "Furthermore, we urge you to not visit a suspicious <a href='https://discord.gg/PY4NC7e'>Discord server</a>. Our automated intellectual property AI scanner has determined that it contains further VIOLATIONS of our INTELLECTUAL PROPERTY and TRADEMARKS.",
+        p2 = "Furthermore, you must under no circumstanced visit <a href='https://discord.gg/PY4NC7e'>this suspicious Discord server</a>. Our automated intellectual property AI scanner has determined that it contains further VIOLATIONS of our INTELLECTUAL PROPERTY and TRADEMARKS.",
         p3 = "END COMMUNICATION"
 )
 
@@ -100,16 +100,22 @@ fun Application.module(testing: Boolean = false) {
     }
 
     routing {
+        // TODO: Move to root, replace "/".
         route("/login") {
             get {
                 call.respond(FreeMarkerContent("login.ftl", null))
             }
             post {
                 val post = call.receiveParameters()
-                if (post["answer"]?.toLowerCase() == "minneapolis") {
+                val answer = post["answer"]?.toLowerCase()
+                // TODO: Update with current headlines at https://www.startribune.com/eedition/login/
+                // and https://www.startribune.com/
+                if (answer?.startsWith("lt. bob kroll") == true
+                        || answer?.startsWith("post-protest virus") == true
+                ) {
                     call.respondRedirect("/mellon", permanent = false)
                 } else {
-                    call.respond(FreeMarkerContent("login.ftl", mapOf("error" to "I knew you were a robot from the past! That is, unless...")))
+                    call.respond(FreeMarkerContent("login.ftl", mapOf("error" to "*Gasp!* You <em>are</em> a robot from the past! Only a human in the present could answer this question.")))
                 }
             }
         }
