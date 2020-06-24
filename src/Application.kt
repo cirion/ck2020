@@ -165,7 +165,7 @@ fun Application.module(testing: Boolean = false) {
                 val post = call.receiveParameters()
                 if (post["answer"]?.toLowerCase() == "glenorchy"
                         || post["answer"]?.toLowerCase() == "kinloch") {
-                    call.respondRedirect("/", permanent = false)
+                    call.respondRedirect("/brown", permanent = false)
                 } else if (post["answer"]?.toLowerCase() == "queenstown") {
                     call.respond(FreeMarkerContent("5_city.ftl", mapOf("error" to "That city is too large. Well, by New Zealand standards, at least. Interpol would have no trouble finding him there. We need to find some place smaller and closer to the trailhead.")))
                 } else if (post["answer"]?.toLowerCase() == "te anau") {

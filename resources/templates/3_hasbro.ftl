@@ -18,7 +18,7 @@
 
 <#if label??>
 <form action="/knockknock" method="post" enctype="application/x-www-form-urlencoded">
-    <input type="hidden" id="inddex" name="index" value="${index}">
+    <input type="hidden" id="index" name="index" value="${index}">
     <div><input type="submit" value="${label}" /></div>
 </form>
 
