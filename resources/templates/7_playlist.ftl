@@ -31,12 +31,14 @@
             <p style="color:red;">${error}</p>
         </#if>
         <form action="/roadtrip" method="post" enctype="application/x-www-form-urlencoded">
+        <span>
             <select id="tracks" name="tracks">
             <#list tracks as item>
                 <option value="${item}">${item}</option>
             </#list>
             </select>
             <div class="col"><input type="submit" value="Submit" /></div>
+            </span>
         </form>
     </div>
 </body>
