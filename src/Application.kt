@@ -193,13 +193,55 @@ fun Application.module(testing: Boolean = false) {
 
         route("/roadtrip") {
             get {
-                val tracks = listOf("I Remember California", "California Love", "California Gurls", "Still In Hollywood")
+                val tracks = listOf(
+                        "California Love",
+                        "San Luis Obispo",
+                        "Big Sur",
+                        "Bixby Canyon Bridge",
+                        "Malibu",
+                        "Telegraph Ave.",
+                        "California",
+                        "San Diego",
+                        "Los Angeles is Burning",
+                        "San Simeon",
+                        "Still in Hollywood",
+                        "L.A. Woman",
+                        "Journey to the End of the East Bay",
+                        "(Go To) California",
+                        "Free Fallin'",
+                        "Lodi",
+                        "(Sittin' On) the Dock of the Bay",
+                        "Ukiah",
+                        "The Little Old Lady (From Pasadena)",
+                        "Folsom Prison Blues",
+                        "Ventura Highway",
+                        "Frisco Blues",
+                        "Promised Land",
+                        "Monterey",
+                        "Back to California",
+                        "Venice, USA",
+                        "The El",
+                        "Saint Dominic's Preview",
+                        "Going to California",
+                        "Since '84",
+                        "707",
+                        "Oakland",
+                        "Palo Alto",
+                        "I Remember California",
+                        "California Gurls",
+                        "Pacific Coast Party",
+                        "California English",
+                        "Half Moon Bay",
+                        "Sausalito Summernight",
+                        "If I Could Give All My Love -Or- Richard Manuel is Dead",
+                        "All I Wanna Do"
+                )
                 call.respond(FreeMarkerContent("7_playlist.ftl", mapOf("tracks" to tracks)))
             }
             post {
                 val post = call.receiveParameters()
                 val guess = post["tracks"]
-                if (guess == "California Love") {
+                if (guess == "The El") {
                     call.respondRedirect("/hacktheplanet", permanent = false)
                 } else {
                     call.respondRedirect("/uhoh", permanent = false)
