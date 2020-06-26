@@ -7,8 +7,14 @@
 <body>
 <div class="content">
     <p>
-    Well spotted! Yes, he must have taken those on the Routeburn Track on the South Island. If he's back online now,
-    though, he must be off the trail and back in one of the small towns nearby. Where should we look for him?
+    Well spotted! Yes, he must have taken those on the Routeburn Track in the South Island.
+    </p>
+    <p>
+    If he's back online now,
+    though, he must be off the trail and hiding in one of the small towns nearby.
+    </p>
+    <p>
+    Where should we look for him?
     </p>
     <#if error??>
         <p style="color:red;">${error}</p>
