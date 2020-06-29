@@ -73,8 +73,10 @@ input[type=submit] {
 }
 
 .game {
-  width: 600px;
-  height: 480px;
+  display: block;
+  margin: auto;
+  width: 640px;
+  height: 490px;
 }
 
 @media (min-width: 360px) {
