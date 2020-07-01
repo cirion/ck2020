@@ -2,6 +2,7 @@
 <html>
 <head>
     <#include "/common/head.ftl">
+    <#include "/common/april.ftl">
     <title>👋</title>
 </head>
 <body>
