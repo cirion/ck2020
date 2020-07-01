@@ -18,6 +18,7 @@ import io.ktor.client.*
 import io.ktor.client.engine.apache.*
 import io.ktor.client.features.logging.*
 import io.ktor.features.DefaultHeaders
+import io.ktor.features.StatusPages
 import io.ktor.freemarker.FreeMarker
 import io.ktor.freemarker.FreeMarkerContent
 import io.ktor.request.receiveParameters
@@ -81,6 +82,11 @@ fun Application.module(testing: Boolean = false) {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
     }
     install(Locations) {
+    }
+    install(StatusPages) {
+        status(HttpStatusCode.NotFound) {
+            call.respond(FreeMarkerContent("404.ftl", null))
+        }
     }
 
     install(DefaultHeaders) {

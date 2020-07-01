@@ -7,7 +7,7 @@
 <body>
 <div class="content">
     <p>
-    Well spotted! Yes, he must have taken those on the Routeburn Track in the South Island.
+    Well spotted! Yes, he took those on the Routeburn Track in the South Island.
     </p>
     <p>
     If he's back online now,

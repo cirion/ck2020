@@ -22,7 +22,11 @@
         <img src="/static/images/donatello_bo.jpg" />
         </p>
         <p>
-        Teenage Mutant Ninja Turtles taught me many valuable lessons, such as the importance of friendship, the deliciousness of pizza, and the radness of skateboards. Also to be careful of time travel! In fact, I’d better make sure that YOU aren’t traveling through time now, trying to mess up history like Splinter did.
+        Teenage Mutant Ninja Turtles taught me many valuable lessons, such as the
+        importance of friendship, the deliciousness of pizza, and the radness of
+        skateboards. Also to be careful of time travel! In fact, I’d better make
+        sure that YOU aren’t traveling through time now, trying to mess up history
+        like Shredder did.
         </p>
         <p>
         I need to know that I’m talking with the real you in the present, and not some evil robot from the past! So, here’s something that only present-day you would know:

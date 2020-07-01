@@ -7,15 +7,25 @@
 <body>
     <div class="content">
         <img src="/static/images/zune.png" />
+        <p>It's definitely Chris's Zune. Look at this Donatello on the back!
+        </p>
+        <img src="/static/images/donatello_sewer.png" />
         <p>
-        You’re right, it can’t possibly be his actual music. It must be another clue!
+        That's a blatant
+        example of copyright infringement if I've ever seen one.
+        And in New Zealand, no less!
+        I guess Chris is an
+        international criminal now.
+        </p>
+        <p>
+        I doubt that Chris normally carries a Zune, though. It must be another clue!
         Let's take a look at the songs on it.
         </p>
         <p>
         <#--
         <iframe src="https://open.spotify.com/embed/playlist/5TvayRvZ8QjQAaLJ7CSo93" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         -->
-        <iframe src="https://open.spotify.com/embed/playlist/5TvayRvZ8QjQAaLJ7CSo93" width="560" height="710" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src="https://open.spotify.com/embed/playlist/5TvayRvZ8QjQAaLJ7CSo93" width="560" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </p>
         <p>
         It seems like a party playlist. There's a theme to these songs, but one of the tracks

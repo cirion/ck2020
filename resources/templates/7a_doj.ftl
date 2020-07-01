@@ -20,11 +20,12 @@ PERMISSION of the RIAA;
 </p>
 <p>
 And FLAGRANT DISREGARD for the LEGALLY BINDING TERMS OF SERVICE of
-Alphabet, Inc., dba Google, dba YouTube.
+Alphabet Inc., dba Google, dba YouTube.
 </p>
 <p>
 Any further FRATERNIZATION with this DANGEROUS CRIMINAL will leave you open
 to charges of CRIMINAL CONSPIRACY. We urge you to press the Back button, close
 your browser window, and THINK CAREFULLY about your LIFE CHOICES.
+</p>
 </div>
 </body>

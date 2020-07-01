@@ -13,7 +13,7 @@ That’s right! It’s been a little surprising to see my hometown city in the n
 Hang on, someone’s at the door. I’ll just be a moment.
 </p>
 <form action="/mellon" method="post" enctype="application/x-www-form-urlencoded">
-    <div><input type="submit" value="Continue" /></div>
+    <div><input type="submit" value="Okay" /></div>
 </form>
 </div>
 </body>
