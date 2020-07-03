@@ -106,8 +106,7 @@ fun Application.module(testing: Boolean = false) {
     }
 
     routing {
-        // TODO: Move to root, replace "/".
-        route("/login") {
+        route("/") {
             get {
                 call.respond(FreeMarkerContent("login.ftl", null))
             }
@@ -280,10 +279,6 @@ fun Application.module(testing: Boolean = false) {
             get {
                 call.respond(FreeMarkerContent("10_lexencrypt.ftl", null))
             }
-        }
-
-        get("/") {
-            call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
         }
 
         get("/html-freemarker") {
