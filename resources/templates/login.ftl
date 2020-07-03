@@ -39,7 +39,7 @@
         <#if error??>
             <p style="color:red;">${error}</p>
         </#if>
-        <form action="/login" method="post" enctype="application/x-www-form-urlencoded">
+        <form action="/" method="post" enctype="application/x-www-form-urlencoded">
             <div class="col"><input type="text" name="answer" /></div>
             <div class="col"><input type="submit" value="Submit" /></div>
         </form>
