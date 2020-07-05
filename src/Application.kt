@@ -112,11 +112,15 @@ fun Application.module(testing: Boolean = false) {
             }
             post {
                 val post = call.receiveParameters()
-                val answer = post["answer"]?.toLowerCase()
+                val answer = post["answer"]?.toLowerCase()?.trim()
                 // TODO: Update with current headlines at https://www.startribune.com/eedition/login/
                 // and https://www.startribune.com/
-                if (answer?.startsWith("lt. bob kroll") == true
-                        || answer?.startsWith("post-protest virus") == true
+                if (answer?.startsWith("monumental decisions") == true
+                        || answer?.startsWith("revisiting minnesota") == true
+                        || answer?.startsWith("u out to pinpoint") == true
+                        || answer?.startsWith("keeping tainted cops") == true
+                        || answer?.startsWith("meatpacking is nearly") == true
+                        || answer?.startsWith("stay or go") == true
                 ) {
                     call.respondRedirect("/mellon", permanent = false)
                 } else {
