@@ -285,6 +285,12 @@ fun Application.module(testing: Boolean = false) {
             }
         }
 
+        route("/afterparty") {
+            get {
+                call.respond(FreeMarkerContent("afterparty.ftl", null))
+            }
+        }
+
         get("/html-freemarker") {
             call.respond(FreeMarkerContent("index.ftl", mapOf("data" to IndexData(listOf(1, 42, 420))), ""))
         }
